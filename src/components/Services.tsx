@@ -4,43 +4,43 @@ import { Database, Zap, ChartBar, Layers3, Users, Shield, FileSpreadsheet, Wrenc
 const services = [
   {
     icon: Database,
-    title: "Data Unification",
-    description: "Seamlessly integrate scattered customer data from your tech stack into a single unified platform with proven data models"
+    title: "Collaborative Implementation",
+    description: "Work closely with your team to integrate and customize Vitally, ensuring it aligns perfectly with your existing workflows and objectives"
   },
   {
     icon: Zap,
-    title: "Automated Workflows",
-    description: "Build powerful, scalable automations that save time and transform reactive teams into proactive ones"
+    title: "Strategic Automation",
+    description: "Partner with your CS leadership to identify, design, and implement automations that drive team efficiency and customer engagement"
   },
   {
     icon: ChartBar,
-    title: "Dynamic Health Scoring",
-    description: "Configure dynamic health scores and insightful dashboards that accurately reflect your success metrics"
+    title: "Success Metrics Design",
+    description: "Collaborate with stakeholders to develop and implement meaningful health scores and KPIs that truly reflect your business goals"
   },
   {
     icon: Layers3,
-    title: "Data-Driven Insights",
-    description: "Transform thousands of data points into actionable insights that drive customer success"
+    title: "Data Strategy",
+    description: "Guide your team in transforming raw data into actionable insights, creating a data-driven culture of customer success"
   },
   {
     icon: Users,
-    title: "Journey Optimization",
-    description: "Streamline customer onboarding and project management with optimized processes and automation"
+    title: "Team Empowerment",
+    description: "Provide hands-on training and enablement, ensuring your team maximizes Vitally's potential while building internal expertise"
   },
   {
     icon: Shield,
-    title: "Enhanced Collaboration",
-    description: "Enable seamless collaboration between teams and customers with shared insights and objectives"
+    title: "Change Management",
+    description: "Support your organization through the transformation, ensuring smooth adoption and sustainable success"
   },
   {
     icon: FileSpreadsheet,
-    title: "Process Development",
-    description: "Create repeatable customer success processes that align with your business goals and scale as you grow"
+    title: "Process Co-Creation",
+    description: "Work alongside your team to develop and implement scalable processes that drive consistent customer outcomes"
   },
   {
     icon: Wrench,
-    title: "Team Enablement",
-    description: "Train and empower your team with the skills and knowledge to maximize Vitally's potential"
+    title: "Ongoing Optimization",
+    description: "Maintain a long-term partnership to continuously refine and enhance your Vitally implementation as your business evolves"
   }
 ];
 
@@ -49,10 +49,10 @@ export const Services = () => {
     <section className="py-20 px-4 bg-dark-secondary">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white text-center mb-4">
-          Technical Expertise & Strategic Enablement
+          Collaborative Expertise & Strategic Partnership
         </h2>
         <p className="text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-          We combine deep technical knowledge with strategic implementation to transform how you operate Customer Success
+          We don't just implement solutions – we partner with your team to co-create success. Our collaborative approach ensures that every technical implementation and strategic initiative drives lasting value.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (

@@ -1,10 +1,11 @@
-import { Database, Zap, ChartBar, Layers3, Users, Shield } from "lucide-react";
+
+import { Database, Zap, ChartBar, Layers3, Users, Shield, FileSpreadsheet, Wrench } from "lucide-react";
 
 const services = [
   {
     icon: Database,
     title: "Data Unification",
-    description: "Seamlessly integrate scattered customer data from your tech stack into a single unified platform"
+    description: "Seamlessly integrate scattered customer data from your tech stack into a single unified platform with proven data models"
   },
   {
     icon: Zap,
@@ -30,6 +31,16 @@ const services = [
     icon: Shield,
     title: "Enhanced Collaboration",
     description: "Enable seamless collaboration between teams and customers with shared insights and objectives"
+  },
+  {
+    icon: FileSpreadsheet,
+    title: "Process Development",
+    description: "Create repeatable customer success processes that align with your business goals and scale as you grow"
+  },
+  {
+    icon: Wrench,
+    title: "Team Enablement",
+    description: "Train and empower your team with the skills and knowledge to maximize Vitally's potential"
   }
 ];
 
@@ -38,17 +49,17 @@ export const Services = () => {
     <section className="py-20 px-4 bg-dark-secondary">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white text-center mb-4">
-          Technical Expertise for Your Vitally Success
+          Technical Expertise & Strategic Enablement
         </h2>
         <p className="text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-          Leverage our deep technical knowledge to unlock Vitally's full potential and transform how you operate Customer Success
+          We combine deep technical knowledge with strategic implementation to transform how you operate Customer Success
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
-            <div key={service.title} className="bg-dark p-8 rounded-lg text-white hover:transform hover:-translate-y-1 transition-transform duration-300">
-              <service.icon className="w-12 h-12 text-primary mb-4" />
-              <h3 className="font-montserrat text-xl font-semibold mb-3">{service.title}</h3>
-              <p className="font-inter text-gray-300">{service.description}</p>
+            <div key={service.title} className="bg-dark p-6 rounded-lg text-white hover:transform hover:-translate-y-1 transition-transform duration-300 h-full flex flex-col">
+              <service.icon className="w-10 h-10 text-primary mb-4" />
+              <h3 className="font-montserrat text-xl font-semibold mb-2">{service.title}</h3>
+              <p className="font-inter text-gray-300 mt-auto">{service.description}</p>
             </div>
           ))}
         </div>

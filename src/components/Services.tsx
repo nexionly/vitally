@@ -46,19 +46,24 @@ const services = [
 
 export const Services = () => {
   return (
-    <section className="py-20 px-4 bg-dark-secondary">
+    <section className="py-20 px-4 bg-gradient-to-br from-dark-secondary to-dark">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white text-center mb-4">
-          Collaborative Expertise & Strategic Partnership
+        <h2 className="font-montserrat text-3xl md:text-4xl font-bold text-white text-center mb-4 bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
+          Strategic Expertise & Personalized Partnership
         </h2>
         <p className="text-gray-300 text-center mb-16 max-w-3xl mx-auto">
-          We don't just implement solutions – we partner with your team to co-create success. Our collaborative approach ensures that every technical implementation and strategic initiative drives lasting value.
+          I don't just implement solutions – I partner with your team to co-create success. My collaborative approach ensures that every technical implementation and strategic initiative drives lasting value.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => (
-            <div key={service.title} className="bg-dark p-6 rounded-lg text-white hover:transform hover:-translate-y-1 transition-transform duration-300 h-full flex flex-col">
-              <service.icon className="w-10 h-10 text-primary mb-4" />
-              <h3 className="font-montserrat text-xl font-semibold mb-2">{service.title}</h3>
+            <div 
+              key={service.title} 
+              className="bg-dark p-6 rounded-lg text-white hover:transform hover:-translate-y-2 transition-all duration-300 h-full flex flex-col shadow-lg hover:shadow-xl border border-primary/20 hover:border-primary/50"
+            >
+              <service.icon className="w-10 h-10 text-primary mb-4 animate-pulse" />
+              <h3 className="font-montserrat text-xl font-semibold mb-2 bg-gradient-to-r from-primary-light to-primary bg-clip-text text-transparent">
+                {service.title}
+              </h3>
               <p className="font-inter text-gray-300 mt-auto">{service.description}</p>
             </div>
           ))}

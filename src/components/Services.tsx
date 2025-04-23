@@ -1,5 +1,4 @@
-
-import { Database, Zap, ChartBar, LayersThree, Users, Shield } from "lucide-react";
+import { Database, Zap, ChartBar, Layers3, Users, Shield } from "lucide-react";
 
 const services = [
   {
@@ -18,7 +17,7 @@ const services = [
     description: "Configure dynamic health scores and insightful dashboards that accurately reflect your success metrics"
   },
   {
-    icon: LayersThree,
+    icon: Layers3,
     title: "Data-Driven Insights",
     description: "Transform thousands of data points into actionable insights that drive customer success"
   },

@@ -7,10 +7,10 @@ export const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-4 bg-vitally-bg-dark bg-gradient-vitally overflow-hidden relative">
       <div className="absolute inset-0 bg-gradient-radial opacity-50" />
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h1 className="font-montserrat text-5xl md:text-7xl font-bold mb-6 animate-fade-up text-white tracking-tight leading-none">
-          Unlock Your Vitally 
+        <h1 className="font-montserrat text-5xl md:text-6xl font-bold mb-6 animate-fade-up text-white tracking-tight leading-none">
+          Stop Just Using Vitally, 
           <span className="bg-gradient-to-r from-vitally-purple to-vitally-blue bg-clip-text text-transparent block mt-2">
-            Potential
+            Start Winning With It
           </span>
         </h1>
         <p className="font-inter text-lg md:text-xl text-gray-300 mb-8 animate-fade-up max-w-2xl mx-auto">

@@ -20,17 +20,11 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="./lovable-uploads/5483d8c8-d208-49fd-aaad-81ae1bf0ba49.png" />
     
-    <!-- Script for GitHub Pages routing -->
+    <!-- Script for error monitoring -->
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // https://github.com/rafgraph/spa-github-pages
-      (function() {
-        const l = window.location;
-        if (l.search[1] === '/') {
-          const decoded = l.search.slice(1).split('&').map(s => s.replace(/~and~/g, '&')).join('?');
-          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-        }
-      })();
+      window.addEventListener('error', function(e) {
+        console.error('Global error caught:', e.message, e.filename, e.lineno);
+      });
     </script>
   </head>
   <body>

@@ -5,7 +5,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/vitally-expert/", // Ensure this matches your GitHub repository name
+  base: "/vitally-expert/",
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

@@ -1,17 +1,26 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const DebugInfo = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [debugInfo, setDebugInfo] = useState({});
   
-  const debugInfo = {
-    publicURL: window.location.origin + window.location.pathname,
-    baseHref: document.querySelector('base')?.getAttribute('href') || 'No base tag',
-    currentPath: window.location.pathname,
-    currentHash: window.location.hash,
-    windowLocation: window.location.toString(),
-    userAgent: navigator.userAgent,
-  };
+  useEffect(() => {
+    const info = {
+      publicURL: window.location.origin + window.location.pathname,
+      base: document.querySelector('base')?.getAttribute('href') || 'No base tag',
+      currentPath: window.location.pathname,
+      currentHash: window.location.hash,
+      fullLocation: window.location.href,
+      origin: window.location.origin,
+      userAgent: navigator.userAgent,
+      envMode: import.meta.env.MODE || 'unknown',
+    };
+    setDebugInfo(info);
+    
+    // Log debug info to console as well
+    console.log("Debug Info:", info);
+  }, [window.location.href]);
 
   return (
     <div className="fixed bottom-4 right-4 z-50">

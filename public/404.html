@@ -9,21 +9,17 @@
     // Single Page Apps for GitHub Pages
     // https://github.com/rafgraph/spa-github-pages
     (function() {
-      // This script takes the current URL and converts the path and query
-      // string into just a query string, and then redirects to the root with that
-      // query string. This is necessary to handle routing for single page apps
-      // hosted on GitHub Pages.
-      const pathSegments = window.location.pathname.split('/');
-      const repoName = pathSegments[1];
-      const path = pathSegments.slice(2).join('/') || '';
-      const query = window.location.search;
-      const pathWithQuery = path + query;
-      const redirectUrl = '/' + repoName + '/?/' + pathWithQuery;
-      window.location.replace(redirectUrl);
+      const segments = window.location.pathname.split('/');
+      const repo = segments[1];
+      const path = segments.slice(2).join('/') || '';
+      const searchParams = new URLSearchParams(window.location.search);
+      const queryString = searchParams.toString();
+      const redirectPath = '/' + repo + '/?/' + path + (queryString ? '?' + queryString : '');
+      window.location.replace(redirectPath);
     })();
   </script>
 </head>
 <body>
-  <p>If you are not redirected automatically, <a href="/">click here</a>.</p>
+  <p>If you are not redirected automatically, <a href="/vitally-expert/">click here</a>.</p>
 </body>
 </html>

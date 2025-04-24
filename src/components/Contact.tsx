@@ -8,13 +8,13 @@ export const Contact = () => {
       <div className="absolute inset-0 bg-gradient-radial opacity-30" />
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h2 className="font-montserrat text-4xl md:text-5xl font-bold mb-6 text-white">
-          Ready to Transform Your{" "}
+          Ready to Transform Vitally from a{" "}
           <span className="bg-gradient-to-r from-vitally-purple to-vitally-blue bg-clip-text text-transparent">
-            Customer Success Operations?
+            Tool into a Growth Engine?
           </span>
         </h2>
         <p className="font-inter text-lg text-gray-300 mb-8">
-          Let's discuss how I can help you implement and optimize Vitally for your growing business
+          Stop letting Vitally's potential go untapped. Whether you're struggling with implementation, looking to optimize your current setup, or need ongoing expert management, I'm here to help accelerate your Vitally ROI.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button

@@ -19,6 +19,21 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="/lovable-uploads/5483d8c8-d208-49fd-aaad-81ae1bf0ba49.png" />
+    
+    <!-- Script for GitHub Pages routing -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      (function() {
+        // Detect if this is a redirect from the 404.html page
+        const searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('/')) {
+          const redirectedPath = searchParams.get('/');
+          const cleanPath = redirectedPath.replace(/^\//, '');
+          history.replaceState(null, null, cleanPath ? '/' + cleanPath : '/');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

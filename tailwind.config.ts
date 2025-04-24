@@ -58,6 +58,17 @@ export default {
           DEFAULT: "#1A1A1A",
           secondary: "#252525",
         },
+        vitally: {
+          purple: "#9b87f5",
+          "purple-dark": "#7E69AB",
+          "bg-dark": "#1A1F2C",
+          blue: "#1EAEDB",
+          "blue-light": "#33C3F0",
+        },
+      },
+      backgroundImage: {
+        'gradient-vitally': 'linear-gradient(135deg, #2a1f62 0%, #7E69AB 100%)',
+        'gradient-radial': 'radial-gradient(circle at center, #7E69AB 0%, #1A1F2C 100%)',
       },
       fontFamily: {
         montserrat: ["Montserrat", "sans-serif"],

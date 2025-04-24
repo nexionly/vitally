@@ -4,21 +4,27 @@ import { Button } from "@/components/ui/button";
 
 export const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-dark to-dark-secondary text-white">
-      <div className="max-w-4xl mx-auto text-center">
-        <h1 className="font-montserrat text-4xl md:text-6xl font-bold mb-6 animate-fade-up bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent">
-          Your Strategic Partner for Vitally Success
+    <section className="min-h-screen flex items-center justify-center px-4 bg-vitally-bg-dark bg-gradient-vitally overflow-hidden relative">
+      <div className="absolute inset-0 bg-gradient-radial opacity-50" />
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        <h1 className="font-montserrat text-5xl md:text-7xl font-bold mb-6 animate-fade-up text-white tracking-tight leading-none">
+          I Help You Build{" "}
+          <span className="bg-gradient-to-r from-vitally-purple to-vitally-blue bg-clip-text text-transparent block mt-2">
+            Scaled CS
+          </span>
         </h1>
-        <p className="font-inter text-lg md:text-xl text-gray-300 mb-8 animate-fade-up">
-          As your dedicated Vitally consultant, I work hand-in-hand with your CS leadership and teams to transform Vitally from a powerful platform into your competitive advantage. From technical implementation to strategic optimization, I'm your partner in driving customer success excellence.
+        <p className="font-inter text-lg md:text-xl text-gray-300 mb-8 animate-fade-up max-w-2xl mx-auto">
+          As your dedicated Vitally consultant, I work hand-in-hand with your CS leadership and teams to transform Vitally from a powerful platform into your competitive advantage.
         </p>
-        <Button 
-          className="bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-md flex items-center gap-2 mx-auto animate-fade-up transition-all duration-300 hover:scale-105 hover:shadow-lg"
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Get Started
-          <ArrowRight className="w-4 h-4" />
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up">
+          <Button 
+            className="bg-vitally-purple hover:bg-vitally-purple-dark text-white font-semibold py-3 px-6 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-105"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Get Started
+            <ArrowRight className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
     </section>
   );

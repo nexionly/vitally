@@ -6,24 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // Single Page Apps for GitHub Pages
-    // MIT License - https://github.com/rafgraph/spa-github-pages
+    // Handle GitHub Pages path issues by redirecting to hash-based routing
     (function() {
-      // Handle GitHub Pages path issues by redirecting to hash-based routing
-      const pathSegments = window.location.pathname.split('/');
-      const repoName = pathSegments[1]; 
-      const remainingPath = pathSegments.slice(2).join('/');
+      var segmentCount = 1; // Number of segments in your repo name - usually 1
+      var repo = "vitally-expert"; // Your repository name
+      var l = window.location;
       
-      // Construct redirect URL with hash routing
-      let redirectTo = '/' + repoName + '/#/' + remainingPath;
-      
-      // Add query params if they exist
-      if (window.location.search) {
-        redirectTo += window.location.search;
-      }
-      
-      // Redirect
-      window.location.replace(redirectTo);
+      // Redirect to the index with the path as a hash
+      l.replace(
+        l.protocol + '//' + l.hostname + 
+        (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
     })();
   </script>
 </head>

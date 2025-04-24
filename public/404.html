@@ -6,12 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // GitHub Pages SPA redirect
+    // GitHub Pages SPA redirect - improved version
     (function() {
       const location = window.location;
-      const repoName = "vitally-expert";
-      const path = location.pathname.substring(location.pathname.indexOf(repoName) + repoName.length) || '/';
-      const redirectUrl = location.origin + '/' + repoName + '/#' + path;
+      console.log('404 redirect script running at:', location.href);
+      
+      // Get the repository name from the pathname
+      const segments = location.pathname.split('/');
+      const repoName = segments[1] || 'vitally-expert';  // Default to 'vitally-expert' if not found
+      
+      // Build the redirect URL to the root with hash routing
+      const redirectUrl = location.origin + '/' + repoName + '/#/';
+      
+      console.log('Redirecting to:', redirectUrl);
       window.location.replace(redirectUrl);
     })();
   </script>

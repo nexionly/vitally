@@ -6,15 +6,28 @@ import DebugInfo from "@/components/DebugInfo";
 import { useEffect, useState } from "react";
 
 const Index = () => {
-  const [showDebug, setShowDebug] = useState(false);
+  const [showDebug, setShowDebug] = useState(true); // Always show debug for troubleshooting
   
   useEffect(() => {
-    // Show debug info if "debug=true" is in the URL
-    const urlParams = new URLSearchParams(window.location.search);
-    setShowDebug(import.meta.env.DEV || urlParams.get('debug') === 'true');
-    
     // Log navigation for troubleshooting
-    console.log("App initialized at:", window.location.href);
+    console.log("Index component rendered at:", window.location.href);
+    console.log("Base path:", document.querySelector('base')?.getAttribute('href'));
+    console.log("ENV MODE:", import.meta.env.MODE);
+    
+    // Add window error handler for better debugging
+    const originalOnError = window.onerror;
+    window.onerror = function(message, source, lineno, colno, error) {
+      console.error("Global error caught:", { message, source, lineno, colno, error });
+      if (originalOnError) {
+        return originalOnError(message, source, lineno, colno, error);
+      }
+      return false;
+    };
+    
+    return () => {
+      // Restore original handler
+      window.onerror = originalOnError;
+    };
   }, []);
   
   return (

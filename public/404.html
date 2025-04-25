@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,23 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // Enhanced GitHub Pages SPA redirect
     (function() {
       const location = window.location;
       console.log('404 redirect script running at:', location.href);
       
-      // Get repo name from path
-      const pathSegments = location.pathname.split('/');
-      const repoName = pathSegments[1] || '';
-      console.log('Detected repo name:', repoName);
+      // Get the full path segments
+      const pathSegments = location.pathname.split('/').filter(Boolean);
+      console.log('Path segments:', pathSegments);
       
-      // Build redirect URL with appropriate path handling
+      // Build redirect URL by joining path segments
       const redirectUrl = location.origin + 
-                          (repoName ? '/' + repoName : '') + 
-                          '/#/' + 
-                          location.pathname
-                            .replace(/^\/[^\/]+/, '') // Remove repo name from path
-                            .replace(/^\//, ''); // Remove leading slash
+                         (pathSegments.length > 0 ? '/' + pathSegments.join('/') : '') + 
+                         '/#/' + 
+                         location.search;
       
       console.log('Redirecting to:', redirectUrl);
       window.location.replace(redirectUrl);

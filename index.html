@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="">
+    <base href="" id="base-tag">
     <title>Vitally Customer Success Implementation Expert</title>
     <meta name="description" content="Expert Vitally implementation and optimization services for Customer Success teams" />
     <meta name="author" content="Lovable" />
@@ -21,46 +20,33 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="lovable-uploads/5483d8c8-d208-49fd-aaad-81ae1bf0ba49.png" />
     
-    <!-- Safe CSP that still allows required resources -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' cdn.gpteng.co; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https:;">
-    
-    <!-- Enhanced debug script to detect path issues -->
+    <!-- Enhanced base path detection -->
     <script>
       (function() {
-        console.log('Page loading at:', window.location.href);
-        console.log('Path:', window.location.pathname);
+        console.log('Initializing base path detection...');
         
-        // Set debug flag for production debugging
-        window.ENABLE_DEBUG = true;
+        // Get the path from the URL, excluding the domain
+        const fullPath = window.location.pathname;
+        console.log('Full path:', fullPath);
         
-        // Improved fix for base path issues in GitHub Pages
-        const isGitHubPages = window.location.hostname.includes('github.io');
-        if (isGitHubPages) {
-          // Extract repository name from pathname
-          const pathSegments = window.location.pathname.split('/');
-          const repoName = pathSegments.length > 1 ? pathSegments[1] : 'vitally-expert';
-          const basePath = `/${repoName}/`;
-          
-          document.querySelector('base').href = basePath;
-          console.log('Set base path for GitHub Pages:', basePath);
-          
-          // Store info for access in app
-          window.GITHUB_PAGES = {
-            enabled: true,
-            repoName: repoName,
-            basePath: basePath
-          };
-        }
+        // Extract the base path by getting everything up to the last segment
+        const pathSegments = fullPath.split('/').filter(Boolean);
+        let basePath = pathSegments.length > 0 ? '/' + pathSegments.join('/') + '/' : '/';
         
-        // Capture any early errors during page load
-        window.addEventListener('error', function(e) {
-          console.error('Early loading error:', e.message);
-          if (e.target && e.target.src) {
-            console.error('Failed resource:', e.target.src);
-          }
-        }, {once: false, passive: true});
+        console.log('Detected base path:', basePath);
+        document.querySelector('#base-tag').href = basePath;
+        
+        // Store for use in the app
+        window.BASE_PATH = basePath;
+        
+        // Debug info
+        console.log('Base path set to:', basePath);
+        console.log('Window location:', window.location.href);
       })();
     </script>
+    
+    <!-- Safe CSP that still allows required resources -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' cdn.gpteng.co; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https:;">
     
     <style>
       /* Immediate loading styles */

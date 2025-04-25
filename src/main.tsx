@@ -4,28 +4,22 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import ErrorBoundary from './components/ErrorBoundary.tsx';
 
-// Enhanced initialization function to handle GitHub Pages paths
 const initializeApp = () => {
   console.log('Initializing application...');
-  console.log('Window location:', window.location.href);
   
-  // Get base URL from the base tag
-  const baseElement = document.querySelector('base');
-  const basePath = baseElement ? baseElement.getAttribute('href') : '';
-  console.log('Base path from DOM:', basePath);
+  // Get base path from the script in index.html
+  const basePath = (window as any).BASE_PATH || '/';
+  console.log('Using base path:', basePath);
   
-  // Check if we're on GitHub Pages
-  const isGitHubPages = window.location.hostname.includes('github.io');
-  console.log('Is GitHub Pages:', isGitHubPages);
-  
-  // Setup error tracking for production
-  if (import.meta.env.PROD) {
-    const originalConsoleError = console.error;
-    console.error = (...args) => {
-      originalConsoleError(...args);
-      // Add error tracking here if needed
-    };
-  }
+  // Enhanced error handling for chunk loading
+  window.addEventListener('error', (event) => {
+    console.error('Error occurred:', event);
+    if (event.message && event.message.includes('loading chunk') || 
+        (event.error && event.error.message && event.error.message.includes('loading chunk'))) {
+      console.log('Chunk loading error detected, attempting recovery...');
+      window.location.reload();
+    }
+  });
 
   const root = document.getElementById("root");
   if (!root) {
@@ -35,7 +29,7 @@ const initializeApp = () => {
   }
 
   try {
-    console.log('Mounting React app...');
+    console.log('Mounting React app with base path:', basePath);
     createRoot(root).render(
       <ErrorBoundary>
         <App />
@@ -54,13 +48,3 @@ if (document.readyState === 'loading') {
 } else {
   initializeApp();
 }
-
-// Add global error handler for chunk loading errors
-window.addEventListener('error', (event) => {
-  if (event.message && event.message.includes('loading chunk') || 
-      (event.error && event.error.message && event.error.message.includes('loading chunk'))) {
-    console.error('Chunk loading error detected. This may be due to a network issue or outdated cache.');
-    console.log('Attempting to reload the page...');
-    window.location.reload();
-  }
-});

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +24,7 @@
     <!-- Safe CSP that still allows required resources -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline' cdn.gpteng.co; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https:;">
     
-    <!-- Debug script to detect path issues -->
+    <!-- Enhanced debug script to detect path issues -->
     <script>
       (function() {
         console.log('Page loading at:', window.location.href);
@@ -32,13 +33,32 @@
         // Set debug flag for production debugging
         window.ENABLE_DEBUG = true;
         
-        // Fix for base path issues in GitHub Pages
+        // Improved fix for base path issues in GitHub Pages
         const isGitHubPages = window.location.hostname.includes('github.io');
         if (isGitHubPages) {
-          const basePath = '/vitally-expert/';
+          // Extract repository name from pathname
+          const pathSegments = window.location.pathname.split('/');
+          const repoName = pathSegments.length > 1 ? pathSegments[1] : 'vitally-expert';
+          const basePath = `/${repoName}/`;
+          
           document.querySelector('base').href = basePath;
           console.log('Set base path for GitHub Pages:', basePath);
+          
+          // Store info for access in app
+          window.GITHUB_PAGES = {
+            enabled: true,
+            repoName: repoName,
+            basePath: basePath
+          };
         }
+        
+        // Capture any early errors during page load
+        window.addEventListener('error', function(e) {
+          console.error('Early loading error:', e.message);
+          if (e.target && e.target.src) {
+            console.error('Failed resource:', e.target.src);
+          }
+        }, {once: false, passive: true});
       })();
     </script>
     

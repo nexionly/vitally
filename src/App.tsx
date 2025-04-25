@@ -1,5 +1,5 @@
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,8 +23,13 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
-  // Log for debugging
-  console.log("App component rendering, hash:", window.location.hash);
+  // Enhanced logging for debugging
+  useEffect(() => {
+    console.log("App component rendering, hash:", window.location.hash);
+    console.log("App base path:", document.querySelector('base')?.getAttribute('href'));
+    console.log("Environment:", import.meta.env.MODE);
+    console.log("Full URL:", window.location.href);
+  }, []);
   
   return (
     <ErrorBoundary>

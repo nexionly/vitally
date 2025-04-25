@@ -6,20 +6,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script>
-    // GitHub Pages SPA redirect - improved version
+    // Enhanced GitHub Pages SPA redirect
     (function() {
       const location = window.location;
       console.log('404 redirect script running at:', location.href);
       
-      // Redirect to the hash router entry point
-      const redirectUrl = location.origin + location.pathname.split('/').slice(0, 2).join('/') + '/#' + location.pathname.replace(/^\/[^\/]+/, '');
+      // Get repo name from path
+      const pathSegments = location.pathname.split('/');
+      const repoName = pathSegments[1] || '';
+      console.log('Detected repo name:', repoName);
+      
+      // Build redirect URL with appropriate path handling
+      const redirectUrl = location.origin + 
+                          (repoName ? '/' + repoName : '') + 
+                          '/#/' + 
+                          location.pathname
+                            .replace(/^\/[^\/]+/, '') // Remove repo name from path
+                            .replace(/^\//, ''); // Remove leading slash
       
       console.log('Redirecting to:', redirectUrl);
       window.location.replace(redirectUrl);
     })();
   </script>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 20px;">
-  <p>Redirecting to the application... If you are not redirected automatically, <a href="/">click here</a>.</p>
+<body style="font-family: sans-serif; text-align: center; padding: 20px; background-color: #1A1F2C; color: white;">
+  <div style="max-width: 600px; margin: 0 auto; border: 1px solid #444; border-radius: 8px; padding: 20px;">
+    <h1>Redirecting...</h1>
+    <p>Please wait while we redirect you to the correct page.</p>
+    <div style="width: 40px; height: 40px; border: 3px solid #8366f4; border-top-color: transparent; border-radius: 50%; margin: 20px auto; animation: spin 1s linear infinite;"></div>
+    <p>If you are not redirected automatically, <a href="/" style="color: #8366f4;">click here</a>.</p>
+  </div>
+  <style>
+    @keyframes spin { 
+      0% { transform: rotate(0deg); } 
+      100% { transform: rotate(360deg); } 
+    }
+  </style>
 </body>
 </html>

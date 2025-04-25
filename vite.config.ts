@@ -5,12 +5,12 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/vitally-expert/",
+  base: "./", // Use relative paths for GitHub Pages
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: mode !== 'production', // Disable sourcemaps in production for performance
     rollupOptions: {
       output: {
         manualChunks: {

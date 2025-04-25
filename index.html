@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <base href="/vitally-expert/">
+    <base href="">
     <title>Vitally Customer Success Implementation Expert</title>
     <meta name="description" content="Expert Vitally implementation and optimization services for Customer Success teams" />
     <meta name="author" content="Lovable" />
@@ -20,18 +21,25 @@
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="lovable-uploads/5483d8c8-d208-49fd-aaad-81ae1bf0ba49.png" />
     
-    <!-- Less restrictive CSP to help troubleshoot -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' * data: blob:; script-src 'self' * 'unsafe-inline' 'unsafe-eval'; style-src 'self' * 'unsafe-inline'; img-src 'self' * data: blob:; connect-src 'self' *;">
+    <!-- Safe CSP that still allows required resources -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' https: data:; connect-src 'self' https:;">
     
     <!-- Debug script to detect path issues -->
     <script>
       (function() {
         console.log('Page loading at:', window.location.href);
-        console.log('Base URL:', document.querySelector('base')?.href || 'No base tag');
         console.log('Path:', window.location.pathname);
         
         // Set debug flag for production debugging
         window.ENABLE_DEBUG = true;
+        
+        // Fix for base path issues in GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        if (isGitHubPages) {
+          const basePath = '/vitally-expert/';
+          document.querySelector('base').href = basePath;
+          console.log('Set base path for GitHub Pages:', basePath);
+        }
       })();
     </script>
     
@@ -61,10 +69,16 @@
   <body>
     <div id="root">
       <div class="loading-fallback">
-        Loading...
+        <div style="text-align: center;">
+          <div style="width: 40px; height: 40px; border: 3px solid #8366f4; border-top-color: transparent; border-radius: 50%; margin: 0 auto; animation: spin 1s linear infinite;"></div>
+          <p style="margin-top: 16px; font-family: sans-serif;">Loading...</p>
+        </div>
       </div>
     </div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
+    <script>
+      // Animation for the loading spinner
+      document.head.insertAdjacentHTML('beforeend', '<style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>');
+    </script>
     <script type="module" src="./src/main.tsx"></script>
   </body>
 </html>

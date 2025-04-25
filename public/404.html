@@ -11,19 +11,15 @@
       const location = window.location;
       console.log('404 redirect script running at:', location.href);
       
-      // Get the repository name from the pathname
-      const segments = location.pathname.split('/');
-      const repoName = segments[1] || 'vitally-expert';  // Default to 'vitally-expert' if not found
-      
-      // Build the redirect URL to the root with hash routing
-      const redirectUrl = location.origin + '/' + repoName + '/#/';
+      // Redirect to the hash router entry point
+      const redirectUrl = location.origin + location.pathname.split('/').slice(0, 2).join('/') + '/#' + location.pathname.replace(/^\/[^\/]+/, '');
       
       console.log('Redirecting to:', redirectUrl);
       window.location.replace(redirectUrl);
     })();
   </script>
 </head>
-<body>
-  <p>Redirecting to the application... If you are not redirected automatically, <a href="/vitally-expert/">click here</a>.</p>
+<body style="font-family: sans-serif; text-align: center; padding: 20px;">
+  <p>Redirecting to the application... If you are not redirected automatically, <a href="/">click here</a>.</p>
 </body>
 </html>
